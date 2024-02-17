@@ -1,6 +1,6 @@
 counter: {{ count$ | async }}
-@if (updated$ | async) {
-    обновлялось: {{ updated$ | async | date: 'yyyy-MM-dd-hh:mm:ss' }}
+@if (updatedAt$ | async) {
+    обновлялось: {{ updatedAt$ | async | date: 'yyyy-MM-dd-hh:mm:ss' }}
 }
 
 <button (click)="increase()">increase</button>

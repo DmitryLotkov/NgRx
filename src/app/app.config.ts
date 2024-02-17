@@ -8,6 +8,7 @@ import {provideEffects} from '@ngrx/effects';
 import {provideRouterStore} from '@ngrx/router-store';
 import {provideStore} from "@ngrx/store";
 import {reducers} from "./state";
+import {AppEffects} from "./state/counter/counter.effect";
 
 export const appConfig: ApplicationConfig = {
     providers: [
@@ -18,7 +19,7 @@ export const appConfig: ApplicationConfig = {
             maxAge: 25,
             logOnly: !isDevMode()
         }),
-        provideEffects(),
+        provideEffects(AppEffects),
         provideRouterStore()
     ]
 };

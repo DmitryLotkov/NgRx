@@ -1,14 +1,14 @@
 import {createFeatureSelector, createSelector} from "@ngrx/store";
-import {CountState} from "./counter";
+import {COUNTER_KEY, CountState} from "./counter";
 
 
 
-export const selectCountFeature = createFeatureSelector<CountState>("counter");
+export const featureSelector = createFeatureSelector<CountState>(COUNTER_KEY);
 
-export const selectCount = createSelector(
-    selectCountFeature, (state: CountState): number => state.counter
+export const countSelector = createSelector(
+    featureSelector, (state: CountState): number => state.counter
 )
 
-export const selectUpdatedAt = createSelector(
-    selectCountFeature, (state: CountState): number => state.updatedAt
+export const updatedAtSelector = createSelector(
+    featureSelector, (state: CountState): number | undefined => state?.updatedAt
 )

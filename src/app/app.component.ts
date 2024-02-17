@@ -4,7 +4,7 @@ import {select, Store} from "@ngrx/store";
 
 
 import {map, Observable} from "rxjs";
-import {selectCount, selectUpdatedAt} from "./state/counter/count.selectors";
+import {countSelector, updatedAtSelector} from "./state/counter/count.selectors";
 import {AsyncPipe, DatePipe} from "@angular/common";
 import {clear, CountState, decrease, increase} from "./state/counter/counter";
 
@@ -17,8 +17,8 @@ import {clear, CountState, decrease, increase} from "./state/counter/counter";
 })
 export class AppComponent {
     title = 'ngrx';
-    count$: Observable<number> = this.store.pipe(select(selectCount));
-    updated$: Observable<number> = this.store.pipe(select(selectUpdatedAt))
+    count$: Observable<number> = this.store.select(countSelector);
+    updatedAt$: Observable<number | undefined> = this.store.select(updatedAtSelector);
     cannotDecrease$ = this.count$.pipe(map(count => count <=0))
     constructor(private store: Store<CountState>) {
     }
